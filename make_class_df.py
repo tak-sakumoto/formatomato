@@ -1,10 +1,22 @@
 import pandas as pd
 
-def make_class_df(cat_names, supercat_names, cat_ids):
-    """
-    Making a dictionary of the class lists
-    """
+from get_categories import get_categories
 
+def make_class_df(coco):
+    """
+    Making a Pandas Dataframe of classes
+    """
+    # Getting category infomations from a COCO dataset
+    cat_names, supercat_names, cat_ids\
+        = get_categories(coco)
+
+    # Making a dictionary of category names with category ID keys
+    cat_names = {
+        cat_id: cat_name 
+        for cat_id, cat_name in zip(cat_ids, cat_names)
+    }
+    
+    # Making lists of class columns
     class_ids = [cat_id for cat_id in cat_ids]
     superclasses = [supercat_name for supercat_name in supercat_names]
     classes = [cat_names[class_id] for class_id in class_ids]
