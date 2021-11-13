@@ -2,7 +2,7 @@ import pandas as pd
 
 def make_image_df(images):
     """
-    Making a Pandas Dataframe of image infomation
+    Making a Pandas Dataframe of image information
     """
 
     # Making lists of extracted data columns

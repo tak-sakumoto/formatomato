@@ -1,4 +1,6 @@
-def make_class_df_dict(cat_names, supercat_names, cat_ids):
+import pandas as pd
+
+def make_class_df(cat_names, supercat_names, cat_ids):
     """
     Making a dictionary of the class lists
     """
@@ -13,4 +15,10 @@ def make_class_df_dict(cat_names, supercat_names, cat_ids):
         'CLASS': classes
     }
 
-    return class_df_dict
+    # Making a Pandas Dataframe
+    class_df = pd.DataFrame(class_df_dict)
+
+    # Set IMAGE_ID as index
+    class_df = class_df.set_index('CLASS_ID')
+
+    return class_df

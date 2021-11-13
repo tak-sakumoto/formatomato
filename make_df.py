@@ -1,4 +1,6 @@
-def make_df_dict(anns, images, cat_names):
+import pandas as pd
+
+def make_df(anns, images, cat_names):
     """
     Making a dictionary of the extracted data lists
     """
@@ -22,4 +24,10 @@ def make_df_dict(anns, images, cat_names):
         'Y_NAX': ymaxs
     }
 
-    return df_dict
+    # Making a Pandas Dataframe
+    df = pd.DataFrame(df_dict)
+
+    # Set IMAGE_ID as index
+    df = df.set_index('IMAGE_ID')
+
+    return df

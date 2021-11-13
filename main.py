@@ -6,8 +6,9 @@ from get_categories import get_categories
 from load_imgs import load_imgs
 from load_anns import load_anns
 from make_image_df import make_image_df
-from make_df_dict import make_df_dict
-from make_class_df_dict import make_class_df_dict
+from make_df import make_df
+from make_class_df import make_class_df
+from write_df_csv import write_df_csv
 
 
 def main():
@@ -32,33 +33,23 @@ def main():
     
     # Loading image informations
     images = load_imgs(coco)
-    
     # Loading annotations
     anns = load_anns(coco)
 
     # Making a Pandas Dataframe of image infomation
     images = make_image_df(images)
 
-    # Saving the Pandas Dataframe for classes to a CSV file
-    images.to_csv(output_image_csv_path)
-    
     # Making a dictionary of the extracted data lists
-    df_dict = make_df_dict(anns, images, cat_names)
-
-    # Making a Pandas Dataframe
-    df = pd.DataFrame(df_dict)
-
-    # Saving the Pandas Dataframe to a CSV file
-    df.to_csv(output_csv_path, index=False)
-
+    df = make_df(anns, images, cat_names)
     # Making a dictionary of class lists
-    class_df_dict = make_class_df_dict(cat_names, supercat_names, cat_ids)
+    class_df = make_class_df(cat_names, supercat_names, cat_ids)
 
-    # Making a Pandas Dataframe for classes
-    class_df = pd.DataFrame(class_df_dict)
-
-    # Saving the Pandas Dataframe for classes to a CSV file
-    class_df.to_csv(output_class_csv_path, index=False)
+    # Writing CSVs based on Pandas Dataframe
+    write_df_csv(
+        df, images, class_df,
+        output_csv_path, output_image_csv_path,
+        output_class_csv_path
+    )
 
 if __name__ == '__main__':
     main()
