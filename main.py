@@ -1,17 +1,21 @@
 import pandas as pd
 from pycocotools.coco import COCO
+
 from parse_args import parse_args
 from get_categories import get_categories
-from  load_imgs import load_imgs
-from  load_anns import load_anns
-from  make_df_dict import make_df_dict
-from  make_class_df_dict import make_class_df_dict
+from load_imgs import load_imgs
+from load_anns import load_anns
+from make_image_df import make_image_df
+from make_df_dict import make_df_dict
+from make_class_df_dict import make_class_df_dict
+
 
 def main():
     # Parsing arguments
     args = parse_args()
     input_coco_path = args.input_coco_path
     output_csv_path = args.output_csv_path
+    output_image_csv_path = args.output_image_csv_path
     output_class_csv_path = args.output_class_csv_path
 
     coco = COCO(input_coco_path)
@@ -28,15 +32,18 @@ def main():
     
     # Loading image informations
     images = load_imgs(coco)
-    print(supercat_names)
+    
     # Loading annotations
     anns = load_anns(coco)
 
-    # Making a dictionary of file names with image ID keys
-    file_names = {img['id']: img['file_name'] for img in images}
+    # Making a Pandas Dataframe of image infomation
+    images = make_image_df(images)
 
+    # Saving the Pandas Dataframe for classes to a CSV file
+    images.to_csv(output_image_csv_path)
+    
     # Making a dictionary of the extracted data lists
-    df_dict = make_df_dict(anns, file_names, cat_names)
+    df_dict = make_df_dict(anns, images, cat_names)
 
     # Making a Pandas Dataframe
     df = pd.DataFrame(df_dict)
