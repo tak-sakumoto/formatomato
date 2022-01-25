@@ -1,14 +1,13 @@
 import pandas as pd
 
-from load_imgs import load_imgs
+from for_coco.load_imgs import load_imgs
 
-def make_image_df(coco):
+def make_image_df(dataset):
     """
     Making a Pandas Dataframe of image information
     """
-
     # Loading image informations
-    images = load_imgs(coco)
+    images = load_imgs(dataset)
 
     # Making lists of image information columns
     image_ids = [img['id'] for img in images]
