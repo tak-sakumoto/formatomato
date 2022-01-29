@@ -2,12 +2,12 @@ import pandas as pd
 
 from load_anns import load_anns
 
-def make_df(coco, images, class_df, normalize=False):
+def make_df(dataset, images, class_df, normalize=False):
     """
     Making a Pandas Dataframe of the extracted data
     """
     # Loading annotations
-    anns = load_anns(coco)
+    anns = load_anns(dataset)
 
     # Making lists of extracted data columns
     img_ids = [ann['image_id'] for ann in anns]
@@ -40,7 +40,8 @@ def make_df(coco, images, class_df, normalize=False):
         ymaxs = [ann['bbox'][1] + ann['bbox'][3] for ann in anns]
 
     df_dict = {
-        'IMAGE_ID': img_names,
+        'IMAGE_ID': img_ids,
+        'IMAGE_NAME': img_names,
         'CLASS': classes,
         'X_MIN': xmins,
         'Y_MIN': ymins,
