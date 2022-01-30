@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 pycocotools = "*"
 pandas = "*"
+pillow = "*"
+pathlib = "*"
 
 [dev-packages]
 

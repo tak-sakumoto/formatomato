@@ -1,14 +1,14 @@
 import pandas as pd
 
-from get_categories import get_categories
+from for_coco.get_categories import get_categories
 
-def make_class_df(coco):
+def make_class_df(dataset):
     """
     Making a Pandas Dataframe of classes
     """
     # Getting category infomations from a COCO dataset
     cat_names, supercat_names, cat_ids\
-        = get_categories(coco)
+        = get_categories(dataset)
 
     # Making a dictionary of category names with category ID keys
     cat_names = {
