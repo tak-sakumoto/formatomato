@@ -25,12 +25,12 @@ def main():
 
     # Loop for images
     for idx, row in image_df.iterrows():
-        img_path = Path(input_dataset_path) / row['FILE_NAME']
+        img_path = Path(input_dataset_path) / row['IMAGE_NAME']
         img_stem = img_path.stem
         img = Image.open(img_path)
         width = img.width
         height = img.height
-        anns_df = df.loc[df['IMAGE_NAME'] == row['FILE_NAME']]
+        anns_df = df.loc[df['IMAGE_NAME'] == row['IMAGE_NAME']]
 
         # Loop for annotations in the image
         for idx_ann, ann in anns_df.iterrows():
