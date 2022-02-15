@@ -23,7 +23,7 @@ def make_df_imagenet(dataset):
     class_df = class_df.set_index('CLASS_ID')
 
     image_ids = []
-    file_names = []
+    image_names = []
     widths = []
     heights = []
     img_classes = []
@@ -34,16 +34,16 @@ def make_df_imagenet(dataset):
 
         for img_path in img_path_list:
             img = Image.open(img_path)
-            file_names.append(img_path.name)
+            image_names.append(img_path.name)
             widths.append(img.width)
             heights.append(img.height)
             img_classes.append(_class)
     
-    image_ids = [i for i in range(len(file_names))]
+    image_ids = [i for i in range(len(image_names))]
 
     image_df_dict = {
         'IMAGE_ID': image_ids,
-        'FILE_NAME': file_names,
+        'IMAGE_NAME': image_names,
         'WIDTH': widths,
         'HEIGHT': heights
     }
@@ -55,7 +55,7 @@ def make_df_imagenet(dataset):
 
     df_dict = {
         'IMAGE_ID': image_ids,
-        'IMAGE_NAME': file_names,
+        'IMAGE_NAME': image_names,
         'CLASS': img_classes
     }
 

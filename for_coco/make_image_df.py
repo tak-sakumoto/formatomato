@@ -11,13 +11,13 @@ def make_image_df(dataset):
 
     # Making lists of image information columns
     image_ids = [img['id'] for img in images]
-    file_names = [img['file_name'] for img in images]
+    image_names = [img['file_name'] for img in images]
     widths = [img['width'] for img in images]
     heights = [img['height'] for img in images]
 
     image_df_dict = {
         'IMAGE_ID': image_ids,
-        'FILE_NAME': file_names,
+        'IMAGE_NAME': image_names,
         'WIDTH': widths,
         'HEIGHT': heights
     }

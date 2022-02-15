@@ -1,7 +1,7 @@
 # formatomato
 ## Introduction
 
-This repository provides modules for converting an image dataset to a CSV file.
+This repository provides modules for converting an image dataset to CSV filess.
 
 ## Usage
 1. Install Python packages by pipenv
@@ -23,3 +23,34 @@ $ pipenv run main.py \
 | --output_image_csv_path /path/to/image.csv | (optional) A path to an output CSV file for images |
 | --output_classes_csv_path | (optional) A path to an output CSV file for classes |
 | --normalize | (optional) A flag for normalizing coordinate values of bbox |
+
+### Output
+The following 3 files
+
+| File | Explanation |
+|-|-|
+| out.csv | Annotations |
+| out_image.csv | Image infos |
+| out_classes | Defined classes |
+
+#### out.csv
+
+| File | Explanation |
+|-|-|
+| out.csv | Annotations |
+
+#### out_image.csv
+
+| File | Explanation |
+|-|-|
+| out.csv | Annotations |
+| out_image.csv | Image infos |
+| out_classes | Defined classes |
+
+#### out_classes
+
+| File | Explanation |
+|-|-|
+| out.csv | Annotations |
+| out_image.csv | Image infos |
+| out_classes | Defined classes |

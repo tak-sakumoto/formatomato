@@ -11,7 +11,7 @@ def make_df(dataset, images, class_df, normalize=False):
 
     # Making lists of extracted data columns
     img_ids = [ann['image_id'] for ann in anns]
-    img_names = [images.loc[img_id, 'FILE_NAME'] for img_id in img_ids]
+    img_names = [images.loc[img_id, 'IMAGE_NAME'] for img_id in img_ids]
     class_ids = [ann['category_id'] for ann in anns]
     classes = [class_df.loc[class_id, 'CLASS'] for class_id in class_ids]
     if normalize:
