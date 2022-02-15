@@ -33,24 +33,29 @@ The following 3 files
 | out_image.csv | Image infos |
 | out_classes | Defined classes |
 
+Each file consists of the following columns
 #### out.csv
-
-| File | Explanation |
+| Column | Explanation |
 |-|-|
-| out.csv | Annotations |
+| IMAGE_ID | Image IDs |
+| IMAGE_NAME | Image names |
+| CLASS | Annotated class names denoting labels for each images in a classification dataset or for each bbox in a detection dataset |
+| X_MIN, Y_MIN | (detection) Upper-left coordinates for each bbox |
+|X_MAX, Y_MAX| (detection) Lower-right coordinates for each bbox |
+|WIDTH, HEIGHT| (detection) Widths and heights for each bbox |
 
 #### out_image.csv
-
-| File | Explanation |
+| Column | Explanation |
 |-|-|
-| out.csv | Annotations |
-| out_image.csv | Image infos |
-| out_classes | Defined classes |
+| IMAGE_ID | Image IDs |
+| IMAGE_NAME | Image names |
+|WIDTH, HEIGHT| Widths and heights for each images |
 
 #### out_classes
-
-| File | Explanation |
+| Column | Explanation |
 |-|-|
-| out.csv | Annotations |
-| out_image.csv | Image infos |
-| out_classes | Defined classes |
+| CLASS_ID | Class IDs |
+| SUPERCLASS | Superclass names |
+| CLASS | Class names |
+
+
