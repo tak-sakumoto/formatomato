@@ -1,0 +1,6 @@
+dataset_name: coco 
+input_dataset_path: /path/to/coco2017/annotations_trainval2017/annotations/instances_val2017.json
+output_csv_path: ./out.csv
+output_image_csv_path: ./out_image.csv
+output_class_csv_path: ./out_classes.csv
+normalize: false 

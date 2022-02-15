@@ -1,4 +1,5 @@
 import re
+import yaml
 
 from parse_args import parse_args
 from get_dataset import get_dataset
@@ -11,6 +12,7 @@ from write_df_csv import write_df_csv
 def main():
     # Parsing arguments
     args = parse_args()
+    config_path = args.config_path
     input_dataset_path = args.input_dataset_path
     dataset_name = args.dataset_name
     output_csv_path = args.output_csv_path
@@ -18,6 +20,18 @@ def main():
     output_class_csv_path = args.output_class_csv_path
     normalize = args.normalize
 
+    # Getting a given config
+    if config_path is not None:
+        with open(config_path, 'r') as f:
+            config = yaml.safe_load(f)
+
+            input_dataset_path = config['input_dataset_path']
+            dataset_name = config['input_dataset_path']
+            output_csv_path = config['output_csv_path']
+            output_image_csv_path = config['output_image_csv_path']
+            output_class_csv_path = config['output_class_csv_path']
+            normalize = config['normalize']
+        
     # Getting a given dataset
     try:
         dataset = get_dataset(dataset_name, input_dataset_path)
